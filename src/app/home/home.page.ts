@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoaderService } from '../services/loader.service';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +8,17 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  constructor(private ionLoader: LoaderService) { }
+  showLoader() {
+    this.ionLoader.showLoader();
+
+    setTimeout(() => {
+      this.hideLoader();
+    }, 2000);
+  }
+
+  hideLoader() {
+    this.ionLoader.hideLoader();
+  }
 
 }
